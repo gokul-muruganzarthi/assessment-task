@@ -10,7 +10,14 @@ type FormValues = {
   address: string;
 };
 
-type FormErrors = Partial<Record<keyof FormValues, string>>;
+type FormErrors = {
+  name?: string;
+  age?: string;
+  city?: string;
+  dob?: string;
+  address?: string;
+};
+
 
 export default function Login() {
   const [values, setValues] = useState<FormValues>({

@@ -7,6 +7,7 @@ type Props = {
   ) => void;
   placeholder?: string;
   isTextArea?: boolean;
+  error?: string;
 };
 
 export default function InputField({
@@ -16,12 +17,18 @@ export default function InputField({
   onChange,
   placeholder,
   isTextArea = false,
+  error,
 }: Props) {
   return (
     <div className="field">
       <label>{label}</label>
+
       {isTextArea ? (
-        <textarea value={value} onChange={onChange} placeholder={placeholder} />
+        <textarea
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
       ) : (
         <input
           type={type}
@@ -30,6 +37,8 @@ export default function InputField({
           placeholder={placeholder}
         />
       )}
+
+      {error && <span className="field-error">{error}</span>}
     </div>
   );
 }
